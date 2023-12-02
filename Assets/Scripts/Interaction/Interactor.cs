@@ -24,7 +24,6 @@ public class Interactor : MonoBehaviour
         Vector3 center = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, Camera.main.nearClipPlane));
         dir = center - Camera.main.transform.position;
         dir = dir.normalized;
-        // Debug.DrawRay(Camera.main.transform.position, dir, Color.red, 1.0f);
 
         if (highlight != null)
         {
@@ -47,22 +46,17 @@ public class Interactor : MonoBehaviour
                     Outline outline = highlight.gameObject.AddComponent<Outline>();
                     outline.enabled = true;
                 }
-
-                // Debug.Log($"Raycast Camera @ {hit.collider.gameObject.name}");
             }
         }
     }
 
     void InteractorInput()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Physics.Raycast(Camera.main.transform.position, dir, out hit) && Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(Camera.main.transform.position, dir, out hit))
+            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactObj))
             {
-                if (hit.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-                {
-                    interactObj.Interact();
-                }
+                interactObj.Interact();
             }
         }
     }

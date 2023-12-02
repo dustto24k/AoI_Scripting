@@ -2,7 +2,11 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Aa]ssets/[Rr]esources/
+/[Aa]ssets/[Rr]esources/_ConceptPhotos/
+/[Aa]ssets/[Rr]esources/[Mm]aterials/
+/[Aa]ssets/[Rr]esources/[Mm]odels/
+/[Aa]ssets/[Rr]esources/[Pp]refabs/[Oo]bj/
+/[Aa]ssets/[Rr]esources/[Tt]extures/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/

@@ -1,0 +1,40 @@
+{
+    "props" : [
+        {
+            "name" : "Note",
+            "desc" : "Darin's worklog"
+        },
+        {
+            "name" : "iMac",
+            "desc" : "Darin's demo version music"
+        },
+        {
+            "name" : "Synthesizer",
+            "desc" : "Darin's instrumental music"
+        },
+        {
+            "name" : "AcousticGuitar",
+            "desc" : "Darin's instrumental music"
+        },
+        {
+            "name" : "Television",
+            "desc" : "Darin's commentary video"
+        },
+        {
+            "name" : "Recordplayer",
+            "desc" : "Darin's recommended music"
+        },
+        {
+            "name" : "Diary",
+            "desc" : "Darin's diary"
+        },
+        {
+            "name" : "Photo",
+            "desc" : "Photo of Darin"
+        },
+        {
+            "name" : "Books",
+            "desc" : "Darin's recommended books"
+        }
+    ]
+}

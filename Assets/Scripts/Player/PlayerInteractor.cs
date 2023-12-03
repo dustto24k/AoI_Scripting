@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IInteractable
-{
-    public void Interact();
-}
+interface IInteractable { public void Interact(); }
 
-public class Interactor : MonoBehaviour
+public class PlayerInteractor : MonoBehaviour
 {
     private Vector3 dir;
     private Transform highlight;
+    private GameObject UItext;
     private RaycastHit hit;
 
     void Start()
@@ -31,11 +29,24 @@ public class Interactor : MonoBehaviour
             highlight = null;
         }
 
+        if (UItext != null)
+        {
+            UItext.SetActive(false);
+            UItext = null;
+        }
+
         if (Physics.Raycast(Camera.main.transform.position, dir, out hit))
         {
-            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+            Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
+
+            if (foundUI != null)
             {
                 highlight = hit.transform;
+                UItext = foundUI.gameObject;
+                UItext.SetActive(true);
+
+                UItext.transform.position = UItext.transform.parent.position - dir * 1.2f;
+                UItext.transform.rotation = Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
 
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
@@ -54,8 +65,11 @@ public class Interactor : MonoBehaviour
     {
         if (Physics.Raycast(Camera.main.transform.position, dir, out hit) && Input.GetMouseButtonDown(0))
         {
-            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+            Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
+
+            if (foundUI != null)
             {
+                IInteractable interactObj = foundUI.GetComponent<IInteractable>();
                 interactObj.Interact();
             }
         }

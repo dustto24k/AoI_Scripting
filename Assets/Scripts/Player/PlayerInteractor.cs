@@ -6,6 +6,8 @@ interface IInteractable { public void Interact(); }
 
 public class PlayerInteractor : MonoBehaviour
 {
+    static public bool iActive;
+
     private Vector3 dir;
     private Transform highlight;
     private GameObject UItext;
@@ -19,43 +21,46 @@ public class PlayerInteractor : MonoBehaviour
 
     void Update()
     {
-        Vector3 center = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, Camera.main.nearClipPlane));
-        dir = center - Camera.main.transform.position;
-        dir = dir.normalized;
-
-        if (highlight != null)
+        if (iActive)
         {
-            highlight.gameObject.GetComponent<Outline>().enabled = false;
-            highlight = null;
-        }
+            Vector3 center = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, Camera.main.nearClipPlane));
+            dir = center - Camera.main.transform.position;
+            dir = dir.normalized;
 
-        if (UItext != null)
-        {
-            UItext.SetActive(false);
-            UItext = null;
-        }
-
-        if (Physics.Raycast(Camera.main.transform.position, dir, out hit))
-        {
-            Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
-
-            if (foundUI != null)
+            if (highlight != null)
             {
-                highlight = hit.transform;
-                UItext = foundUI.gameObject;
-                UItext.SetActive(true);
+                highlight.gameObject.GetComponent<Outline>().enabled = false;
+                highlight = null;
+            }
 
-                UItext.transform.position = UItext.transform.parent.position - dir * 1.2f;
-                UItext.transform.rotation = Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
+            if (UItext != null)
+            {
+                UItext.SetActive(false);
+                UItext = null;
+            }
 
-                if (highlight.gameObject.GetComponent<Outline>() != null)
+            if (Physics.Raycast(Camera.main.transform.position, dir, out hit))
+            {
+                Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
+
+                if (foundUI != null)
                 {
-                    highlight.gameObject.GetComponent<Outline>().enabled = true;
-                }
-                else
-                {
-                    Outline outline = highlight.gameObject.AddComponent<Outline>();
-                    outline.enabled = true;
+                    highlight = hit.transform;
+                    UItext = foundUI.gameObject;
+                    UItext.SetActive(true);
+
+                    UItext.transform.position = UItext.transform.parent.position - dir * 1.2f;
+                    UItext.transform.rotation = Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
+
+                    if (highlight.gameObject.GetComponent<Outline>() != null)
+                    {
+                        highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    }
+                    else
+                    {
+                        Outline outline = highlight.gameObject.AddComponent<Outline>();
+                        outline.enabled = true;
+                    }
                 }
             }
         }
@@ -63,14 +68,17 @@ public class PlayerInteractor : MonoBehaviour
 
     void InteractorInput()
     {
-        if (Physics.Raycast(Camera.main.transform.position, dir, out hit) && Input.GetMouseButtonDown(0))
+        if (iActive)
         {
-            Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
-
-            if (foundUI != null)
+            if (Physics.Raycast(Camera.main.transform.position, dir, out hit) && Input.GetMouseButtonDown(0))
             {
-                IInteractable interactObj = foundUI.GetComponent<IInteractable>();
-                interactObj.Interact();
+                Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
+
+                if (foundUI != null)
+                {
+                    IInteractable interactObj = foundUI.GetComponent<IInteractable>();
+                    interactObj.Interact();
+                }
             }
         }
     }

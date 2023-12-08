@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    static public bool pActive;
+
     [SerializeField]
     float moveSpeed = 3.0f;
 
@@ -30,12 +32,15 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        if (pActive)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
 
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+        }
     }
 
     private void SpeedControl()

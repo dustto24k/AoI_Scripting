@@ -2,39 +2,39 @@
     "props" : [
         {
             "name" : "Note",
-            "desc" : "Darin's worklog"
+            "desc" : "다린의 수첩"
         },
         {
             "name" : "iMac",
-            "desc" : "Darin's demo version music"
+            "desc" : "다린의 아이맥"
         },
         {
             "name" : "Synthesizer",
-            "desc" : "Darin's instrumental music"
+            "desc" : "다린의 신디사이저"
         },
         {
             "name" : "AcousticGuitar",
-            "desc" : "Darin's instrumental music"
+            "desc" : "다린의 기타"
         },
         {
             "name" : "Television",
-            "desc" : "Darin's commentary video"
+            "desc" : "다린의 TV"
         },
         {
             "name" : "Recordplayer",
-            "desc" : "Darin's recommended music"
+            "desc" : "다린의 LP플레이어"
         },
         {
             "name" : "Diary",
-            "desc" : "Darin's diary"
+            "desc" : "다린의 일기장"
         },
         {
             "name" : "Photo",
-            "desc" : "Photo of Darin"
+            "desc" : "다린의 사진"
         },
         {
             "name" : "Books",
-            "desc" : "Darin's recommended books"
+            "desc" : "다린의 책더미"
         }
     ]
 }

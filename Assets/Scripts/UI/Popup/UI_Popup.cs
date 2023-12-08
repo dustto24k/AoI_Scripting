@@ -6,11 +6,24 @@ public class UI_Popup : UI_Base
 {
     public override void Init()
     {
+        MainScene.PlayerDeactivate();
         Managers.UI.SetCanvas(gameObject, true);
+
+        Managers.Input.KeyAction -= EscapeInput;
+        Managers.Input.KeyAction += EscapeInput;
     }
 
-    public virtual void ClosePopupUI()
+    protected void OnClosePopup()
     {
+        Managers.Input.KeyAction -= EscapeInput;
+
         Managers.UI.ClosePopupUI(this);
+        MainScene.PlayerActivate();
+    }
+
+    private void EscapeInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnClosePopup();
     }
 }

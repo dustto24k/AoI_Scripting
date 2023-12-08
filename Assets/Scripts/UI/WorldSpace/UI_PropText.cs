@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UI_PropText : UI_Base, IInteractable
 {
-    enum GameObjects
+    enum Texts
     {
         PropDesc,
         InteractInfo
@@ -17,15 +17,32 @@ public class UI_PropText : UI_Base, IInteractable
 
         Dictionary<string, string> dict = Managers.Data.PropDict;
 
-        Bind<GameObject>(typeof(GameObjects));
+        Bind<TextMeshProUGUI>(typeof(Texts));
 
         string _desc = dict[transform.parent.name];
-        GetObject((int)GameObjects.PropDesc).GetComponent<TextMeshProUGUI>().text = $"{_desc}";
-        GetObject((int)GameObjects.InteractInfo).GetComponent<TextMeshProUGUI>().text = "click to interact";
+        GetText((int)Texts.PropDesc).text = $"{_desc}";
+        GetText((int)Texts.InteractInfo).text = "클릭해서 자세히 보기";
     }
 
     public void Interact()
     {
-        Debug.Log($"{GetObject((int)GameObjects.PropDesc).GetComponent<TextMeshProUGUI>().text}");
+        switch (transform.parent.name)
+        {
+            case ("Note"):
+                Managers.UI.ShowPopupUI<UI_Prop_Note>();
+                break;
+
+            case ("Diary"):
+                Managers.UI.ShowPopupUI<UI_Prop_Diary>();
+                break;
+
+            case ("Photo"):
+                Managers.UI.ShowPopupUI<UI_Prop_Photo>();
+                break;
+
+            case ("Books"):
+                Managers.UI.ShowPopupUI<UI_Prop_Books>();
+                break;
+        }
     }
 }

@@ -32,6 +32,22 @@ public class UI_PropText : UI_Base, IInteractable
                 Managers.UI.ShowPopupUI<UI_Prop_Note>();
                 break;
 
+            case ("iMac"):
+                Managers.UI.ShowPopupUI<UI_Prop_iMac>();
+                break;
+
+            case ("Synthesizer"):
+                Managers.UI.ShowPopupUI<UI_Prop_Synthesizer>();
+                break;
+
+            case ("AcousticGuitar"):
+                Managers.UI.ShowPopupUI<UI_Prop_AcousticGuitar>();
+                break;
+
+            case ("Recordplayer"):
+                Managers.UI.ShowPopupUI<UI_Prop_Recordplayer>();
+                break;
+
             case ("Diary"):
                 Managers.UI.ShowPopupUI<UI_Prop_Diary>();
                 break;

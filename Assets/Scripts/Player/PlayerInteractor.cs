@@ -64,6 +64,25 @@ public class PlayerInteractor : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (Physics.Raycast(Camera.main.transform.position, dir, out hit))
+            {
+                Transform foundUI = hit.collider.gameObject.transform.Find("UI_PropText");
+
+                if (foundUI != null)
+                {
+                    highlight = hit.transform;
+                    UItext = foundUI.gameObject;
+                    UItext.SetActive(false);
+
+                    if (highlight.gameObject.GetComponent<Outline>() != null)
+                    {
+                        highlight.gameObject.GetComponent<Outline>().enabled = false;
+                    }
+                }
+            }
+        }
     }
 
     void InteractorInput()

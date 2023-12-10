@@ -58,6 +58,21 @@ public abstract class UI_Base : MonoBehaviour
                 evt.OnClickHandler -= action;
                 evt.OnClickHandler += action;
                 break;
+
+            case Define.UIEvent.Pressed:
+                evt.OnPressedHandler -= action;
+                evt.OnPressedHandler += action;
+                break;
+
+            case Define.UIEvent.PointerDown:
+                evt.OnPointerDownHandler -= action;
+                evt.OnPointerDownHandler += action;
+                break;
+
+            case Define.UIEvent.PointerUp:
+                evt.OnPointerUpHandler -= action;
+                evt.OnPointerUpHandler += action;
+                break;
         }
     }
 }

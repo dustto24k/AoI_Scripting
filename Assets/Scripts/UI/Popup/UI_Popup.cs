@@ -16,6 +16,7 @@ public class UI_Popup : UI_Base
     protected void OnClosePopup()
     {
         Managers.Input.KeyAction -= EscapeInput;
+        Camera.main.GetComponent<AudioSource>().clip = null;
 
         Managers.UI.ClosePopupUI(this);
         MainScene.PlayerActivate();

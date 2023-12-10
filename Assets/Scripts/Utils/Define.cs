@@ -11,15 +11,18 @@ public class Define
         Main,
     }
 
+    public enum Sound
+    {
+        Bgm,
+        Effect,
+        MaxCount,
+    }
+
     public enum UIEvent
     {
         Click,
-        Drag,
-    }
-
-    public enum MouseEvent
-    {
-        Press,
-        Click,
+        Pressed,
+        PointerDown,
+        PointerUp,
     }
 }

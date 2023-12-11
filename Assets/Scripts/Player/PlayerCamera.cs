@@ -5,16 +5,19 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     static public bool cActive;
-
-    public float sensX;
-    public float sensY;
-
-    public Transform orientation;
+    private float sensX = 400;
+    private float sensY = 400;
+    private Transform orientation;
 
     float xRotation;
     float yRotation;
 
-    private void Update()
+    private void Start()
+    {
+        orientation = GameObject.Find("Orientation").transform;
+    }
+
+    private void FixedUpdate()
     {
         if (cActive)
         {

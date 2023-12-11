@@ -25,6 +25,17 @@ public class MainScene : BaseScene
         }
     }
 
+    private void Update()
+    {
+        if (PlayerCamera.cActive && GameObject.Find("Player").transform.position.y > 6.0f)
+            GameObject.Find("CameraReticle").transform.GetChild(0).gameObject.SetActive(true);
+        else GameObject.Find("CameraReticle").transform.GetChild(0).gameObject.SetActive(false);
+
+
+        if (PlayerCamera.cActive && Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
+
     public override void Clear()
     {
     }
@@ -34,7 +45,6 @@ public class MainScene : BaseScene
         PlayerCamera.cActive = true;
         PlayerController.pActive = true;
         PlayerInteractor.iActive = true;
-        GameObject.Find("CameraReticle").transform.GetChild(0).gameObject.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

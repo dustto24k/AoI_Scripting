@@ -44,6 +44,10 @@ public class UI_PropText : UI_Base, IInteractable
                 Managers.UI.ShowPopupUI<UI_Prop_AcousticGuitar>();
                 break;
 
+            case ("Television"):
+                Managers.UI.ShowPopupUI<UI_Prop_Television>();
+                break;
+
             case ("Recordplayer"):
                 Managers.UI.ShowPopupUI<UI_Prop_Recordplayer>();
                 break;

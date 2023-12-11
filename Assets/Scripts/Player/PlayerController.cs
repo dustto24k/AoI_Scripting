@@ -6,11 +6,8 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     static public bool pActive;
-
-    [SerializeField]
-    float moveSpeed = 3.0f;
-
-    public Transform orientation;
+    private float moveSpeed = 2.5f;
+    private Transform orientation;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
@@ -18,15 +15,17 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        orientation = GameObject.Find("Orientation").transform;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        Managers.Input.KeyAction -= PlayerInput;
-        Managers.Input.KeyAction += PlayerInput;
+        Managers.GetInput.KeyAction -= PlayerInput;
+        Managers.GetInput.KeyAction += PlayerInput;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        PlayerInput();
         SpeedControl();
     }
 
@@ -38,8 +37,7 @@ public class PlayerController : MonoBehaviour
             verticalInput = Input.GetAxisRaw("Vertical");
 
             moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-            rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 6.0f, ForceMode.Force);
         }
     }
 

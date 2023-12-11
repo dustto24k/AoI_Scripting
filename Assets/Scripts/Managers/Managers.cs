@@ -15,7 +15,7 @@ public class Managers : MonoBehaviour
     UIManager _ui = new UIManager();
 
     public static DataManager Data { get { return Instance._data; } }
-    public static InputManager Input { get { return Instance._input; } }
+    public static InputManager GetInput { get { return Instance._input; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static SoundManager Sound { get { return Instance._sound; } }
@@ -26,7 +26,7 @@ public class Managers : MonoBehaviour
         Init();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _input.OnUpdate();
     }
@@ -53,7 +53,7 @@ public class Managers : MonoBehaviour
     public static void Clear()
     {
         Sound.Clear();
-        Input.Clear();
+        GetInput.Clear();
         Scene.Clear();
         UI.Clear();
     }

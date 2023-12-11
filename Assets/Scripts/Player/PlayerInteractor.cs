@@ -15,8 +15,8 @@ public class PlayerInteractor : MonoBehaviour
 
     void Start()
     {
-        Managers.Input.KeyAction -= InteractorInput;
-        Managers.Input.KeyAction += InteractorInput;
+        Managers.GetInput.KeyAction -= InteractorInput;
+        Managers.GetInput.KeyAction += InteractorInput;
     }
 
     void Update()

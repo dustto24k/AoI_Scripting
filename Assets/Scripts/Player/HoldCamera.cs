@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class HoldCamera : MonoBehaviour
 {
-    public Transform cameraPosition;
+    private Transform cameraPosition;
+
+    private void Start()
+    {
+        cameraPosition = GameObject.Find("CameraPos").transform;
+    }
 
     private void Update()
     {

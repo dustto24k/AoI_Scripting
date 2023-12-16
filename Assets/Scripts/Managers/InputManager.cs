@@ -6,6 +6,7 @@ using UnityEngine;
 public class InputManager
 {
     public Action KeyAction = null;
+    public Action FixedKeyAction = null;
 
     public void OnUpdate()
     {
@@ -16,8 +17,17 @@ public class InputManager
             KeyAction.Invoke();
     }
 
+    public void OnFixedUpdate()
+    {
+        if (Input.anyKey == false)
+            return;
+
+        if (FixedKeyAction != null)
+            FixedKeyAction.Invoke();
+    }
+
     public void Clear()
     {
-        KeyAction = null;
+        FixedKeyAction = null;
     }
 }

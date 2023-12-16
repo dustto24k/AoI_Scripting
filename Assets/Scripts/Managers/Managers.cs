@@ -26,9 +26,14 @@ public class Managers : MonoBehaviour
         Init();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         _input.OnUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        _input.OnFixedUpdate();
     }
 
     static void Init()

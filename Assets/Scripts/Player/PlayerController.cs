@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        Managers.GetInput.KeyAction -= PlayerInput;
-        Managers.GetInput.KeyAction += PlayerInput;
+        Managers.GetInput.FixedKeyAction -= PlayerInput;
+        Managers.GetInput.FixedKeyAction += PlayerInput;
     }
 
     private void FixedUpdate()

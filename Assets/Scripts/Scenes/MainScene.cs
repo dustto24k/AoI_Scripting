@@ -27,11 +27,6 @@ public class MainScene : BaseScene
 
     private void Update()
     {
-        if (PlayerCamera.cActive && GameObject.Find("Player").transform.position.y > 6.0f)
-            GameObject.Find("CameraReticle").transform.GetChild(0).gameObject.SetActive(true);
-        else GameObject.Find("CameraReticle").transform.GetChild(0).gameObject.SetActive(false);
-
-
         if (PlayerCamera.cActive && Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
     }

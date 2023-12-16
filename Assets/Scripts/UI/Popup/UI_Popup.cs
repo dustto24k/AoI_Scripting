@@ -8,14 +8,10 @@ public class UI_Popup : UI_Base
     {
         MainScene.PlayerDeactivate();
         Managers.UI.SetCanvas(gameObject, true);
-
-        //Managers.GetInput.KeyAction -= EscapeInput;
-        //Managers.GetInput.KeyAction += EscapeInput;
     }
 
     protected void OnClosePopup()
     {
-        // Managers.GetInput.KeyAction -= EscapeInput;
         Camera.main.GetComponent<AudioSource>().clip = null;
 
         Managers.UI.ClosePopupUI(this);

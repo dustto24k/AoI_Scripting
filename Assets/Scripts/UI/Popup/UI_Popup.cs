@@ -12,15 +12,10 @@ public class UI_Popup : UI_Base
 
     protected void OnClosePopup()
     {
-        Camera.main.GetComponent<AudioSource>().clip = null;
+        if (GameObject.Find("Player").transform.position.y > 6.0f)
+            Camera.main.GetComponent<AudioSource>().clip = null;
 
         Managers.UI.ClosePopupUI(this);
         MainScene.PlayerActivate();
-    }
-
-    private void EscapeInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OnClosePopup();
     }
 }

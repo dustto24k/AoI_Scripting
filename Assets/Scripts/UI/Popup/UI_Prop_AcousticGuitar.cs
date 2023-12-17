@@ -47,6 +47,7 @@ public class UI_Prop_AcousticGuitar : UI_Popup
 
         audioSource = Camera.main.GetComponent<AudioSource>();
         audioSource.clip = music;
+        audioSource.Play(); audioSource.Pause();
     }
 
     private void Update()

@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class MainScene : BaseScene
 {
+    static public int hallnum = 0;
+
     protected override void Init()
     {
         base.Init();
         SceneType = Define.Scene.Main;
 
         PlayerActivate();
+        Managers.UI.ShowSceneUI<UI_HallInfo>();
 
         Transform IPparent = GameObject.Find("InteractableProps").transform;
 
@@ -23,17 +26,17 @@ public class MainScene : BaseScene
             UI_PropText ui = Managers.UI.MakeWorldSpaceUI<UI_PropText>(prop.transform);
             ui.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f) * scaler[i];
         }
+        Managers.UI.MakeWorldSpaceUI<UI_PropText>(GameObject.Find("mer").transform);
+        Managers.UI.MakeWorldSpaceUI<UI_PropText>(GameObject.Find("brachio").transform);
     }
 
     private void Update()
     {
-        if (PlayerCamera.cActive && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
     }
 
-    public override void Clear()
-    {
-    }
+    public override void Clear() { }
 
     public static void PlayerActivate()
     {

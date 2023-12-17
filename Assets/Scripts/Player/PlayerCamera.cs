@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     static public bool cActive;
-    private float sensX = 400;
-    private float sensY = 400;
+    private float sensX = 200;
+    private float sensY = 200;
     private Transform orientation;
 
-    float xRotation = 0f;
+    float xRotation = -3f;
     float yRotation = 90f;
 
     private void Start()
@@ -31,6 +31,7 @@ public class PlayerCamera : MonoBehaviour
                 xRotation -= mouseY;
                 xRotation = Mathf.Clamp(xRotation, -40f, 40f);
             }
+            else xRotation = -3f;
 
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);

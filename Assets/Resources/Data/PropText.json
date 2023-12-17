@@ -35,6 +35,14 @@
         {
             "name" : "Books",
             "desc" : "다린의 책더미"
+        },
+        {
+            "name" : "mer",
+            "desc" : ""
+        },
+        {
+            "name" : "brachio",
+            "desc" : ""
         }
     ]
 }

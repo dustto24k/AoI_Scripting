@@ -63,6 +63,14 @@ public class UI_PropText : UI_Base, IInteractable
             case ("Books"):
                 Managers.UI.ShowPopupUI<UI_Prop_Books>();
                 break;
+
+            case ("mer"):
+                Managers.UI.ShowPopupUI<UI_Obj_Mer>();
+                break;
+
+            case ("brachio"):
+                Managers.UI.ShowPopupUI<UI_Obj_Brachio>();
+                break;
         }
     }
 }
